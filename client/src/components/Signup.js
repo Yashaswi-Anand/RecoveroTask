@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar'
+import { success } from '../Toast';
 import { signup } from '../Utils/ApiUtils';
 
 function Signup() {
@@ -20,6 +21,7 @@ function Signup() {
     console.log(signUpData);
     const apiResponce = await signup(signUpData)
     if (apiResponce.status === 200) {
+        success(apiResponce.data.message)
         console.log("responcemessage", apiResponce);
         navigate('/signin');
     } else {
@@ -31,7 +33,7 @@ function Signup() {
   return (
     <div>
       <NavBar />
-      <h4 className="my-5 fs-2 text-danger">Sign UP</h4>
+      <h4 className="my-5 fs-2 text-danger">SIGNUP</h4>
       <div>
         <form className="d-flex flex-column align-items-center ">
           <input
@@ -61,7 +63,7 @@ function Signup() {
           SIGNUP
         </button>
         <div>
-          <button className="form-control w-50 btn btn-primary mt-3 btn">
+          <button className="form-control w-50 btn btn-primary mt-3 btn" onClick={() => navigate('/signin')}>
             SIGNIN
           </button>
         </div>

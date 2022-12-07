@@ -1,5 +1,5 @@
 const express = require('express');
-const { signup, signin, allUser } = require('../conroller/userController');
+const { signup, signin, allUser, deleteUser } = require('../conroller/userController');
 const route = express.Router();
 
 // user create
@@ -8,5 +8,7 @@ route.post('/signup', signup)
 route.post('/signin', signin)
 // get all user
 route.get('/allUsers', allUser)
+// delete user
+route.delete('/deleteUser/:id', deleteUser)
 
 module.exports = route

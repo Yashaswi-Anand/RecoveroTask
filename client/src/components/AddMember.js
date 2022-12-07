@@ -1,30 +1,34 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { success } from '../Toast';
 import { signup } from '../Utils/ApiUtils';
 
 function AddMember() {
-    const [signUpData, setLogin] = useState({
+    const navigate = useNavigate()
+    const [userData, setUserData] = useState({
         email: "",
         password: ""
       });
     
       const onHandleEvent = (event) => {
-        setLogin({ ...signUpData, [event.target.name]: event.target.value, [event.target.name]: event.target.value, [event.target.name]: event.target.value})
-        console.log(signUpData);
+        setUserData({ ...userData, [event.target.name]: event.target.value, [event.target.name]: event.target.value, [event.target.name]: event.target.value})
+        console.log(userData);
       }
     
       const onAddMember = async () => {
-        console.log(signUpData);
-        const apiResponce = await signup(signUpData)
+        console.log(userData);
+        const apiResponce = await signup(userData)
         if (apiResponce.status === 200) {
             console.log("responcemessage", apiResponce);
         } else {
             console.log("error");
         }
+        success("New member added successfully !!!")
       }
   return (
     <div>
         <div className='row bg-primary pt-1 fixed'>
-          <div className='col-3'></div>
+          <div className='col-3'><h2 className='mt-3 text-align text-light'><i class="fa-solid fa-arrow-left" onClick={()=> navigate('/adminDashboard')}></i></h2></div>
           <div className='col-6'><h2 className='mt-3 text-align text-light'><i className="fa-solid fa-address-book"></i>&nbsp; Add New Member</h2></div>
           <div className='col-3'></div>
       </div>

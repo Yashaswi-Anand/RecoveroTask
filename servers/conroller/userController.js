@@ -58,3 +58,19 @@ exports.allUser = async(req,res) =>{
         return res.status(500).json({error, message: 'Internal server error.'});
     }
 }
+
+// delete user
+exports.deleteUser = async(req,res) =>{
+    try{
+        const user = await User.findByIdAndDelete({"_id": req.params.id})
+
+        if(!user){
+            return res.status(400).json({message: 'Error deleting todo.'});
+        }
+        return res.status(200).json({message: 'User deleted successfully.'});
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error, message: 'Internal server error.'});
+    }
+}

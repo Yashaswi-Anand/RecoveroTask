@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import NavBar from '../NavBar'
 import { useNavigate } from 'react-router-dom';
 import { signin } from '../Utils/ApiUtils';
+import { success } from '../Toast';
 
 function Login() {
 
@@ -21,6 +22,7 @@ function Login() {
     const apiResponce = await signin(signUpData)
     if (apiResponce.status === 200) {
         console.log("responcemessage", apiResponce);
+        success(apiResponce.data.message)
         if(apiResponce.data.user.status === 'admin'){
           navigate('/adminDashboard');
         }else{
@@ -59,7 +61,7 @@ function Login() {
           SIGNIN
         </button>
         <div>
-          <button className="form-control w-50 btn btn-primary mt-3 btn">
+          <button className="form-control w-50 btn btn-primary mt-3 btn" onClick={() => navigate('/')}>
             SIGNUP
           </button>
         </div>
