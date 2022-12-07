@@ -44,3 +44,17 @@ exports.signin = async(req,res) =>{
         return res.status(500).json({error, message: 'Internal server error.'});
     }
 }
+
+// get all users
+exports.allUser = async(req,res) =>{
+    try {
+        const users = await User.find()
+        if(users.length == 0){
+            return res.status(400).json({message: 'user not found...'});
+        }
+        return res.status(200).json({users:users, message: 'User found successfully...'});
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({error, message: 'Internal server error.'});
+    }
+}
