@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
     },
     status:{
         type:String,
-        default: 'employee'
+        required: true
     }
 })
 

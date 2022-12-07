@@ -9,10 +9,7 @@ exports.signup = async(req,res) =>{
         if(user){
             return res.status(400).json({message: 'user already exist.'});
         }
-        const newUser = await User.create({
-            email: req.body.email,
-            password: req.body.password,
-        });
+        const newUser = await User.create(req.body);
 
         if(!newUser){
             return res.status(400).json({message: 'User creation error.'});
@@ -40,7 +37,7 @@ exports.signin = async(req,res) =>{
         }
 
 
-        return res.status(200).json({message: 'SignIn successful.'});
+        return res.status(200).json({user:user, message: 'SignIn successful.'});
 
     } catch (error) {
         console.log(error);
