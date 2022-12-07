@@ -24,8 +24,6 @@
 ## Project Demo
 
 
-<img src="https://github.com/Yashaswi-Anand/RecoveroTask/blob/master/screenshots/one.png" alt="Image">
-
 # SignUp
 ![image](https://github.com/Yashaswi-Anand/RecoveroTask/blob/master/screenshots/one.png)
 
