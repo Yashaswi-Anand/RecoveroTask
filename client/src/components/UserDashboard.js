@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function UserDashboard() {
+  const navigate = useNavigate()
   return (
     <div>
       <div className='row bg-primary pt-1 pb-2 fixed'>
